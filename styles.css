@@ -1,12 +1,13 @@
 * {
-  --container-width: 600px;
-  --grid-width: calc(var(--container-width) / 16);
+  --container-width: 700px;
+  --percentage: calc(var(--container-width) / 16);
 }
 
 .grid {
   box-sizing: border-box;
   border: 1px solid black;
   width: var(--percentage);
+  min-height: 1px;
 }
 
 #container {
