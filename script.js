@@ -10,7 +10,14 @@ function makeGrid(size){
 
         grid.classList.add('grid');
 
-        
+        grid.addEventListener('mouseover', (e) => {
+            
+            let doesItHaveAColorSet = e.currentTarget.style.backgroundColor = 'white';
+            if (doesItHaveAColorSet){
+                
+            }
+            e.currentTarget.style.backgroundColor = 'red';
+        })
 
         container.appendChild(grid);
     }
