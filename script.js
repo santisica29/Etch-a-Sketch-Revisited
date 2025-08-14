@@ -5,6 +5,8 @@ let modeSelected;
 let btnMode = document.querySelector(".btnMode");
 btnMode.addEventListener("click", () => {
   modeSelected = mode.value;
+  console.log(modeSelected);
+  addEventListenersToGrids(modeSelected);
 });
 
 makeGrid(16);
@@ -19,8 +21,6 @@ function makeGrid(size) {
 
     container.appendChild(grid);
   }
-
-  addEventListenersToGrids(modeSelected);
 }
 
 function addEventListenersToGrids(modeSelected) {
