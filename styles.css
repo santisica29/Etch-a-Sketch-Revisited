@@ -12,7 +12,7 @@
 
 #container {
   margin: 1rem auto;
-  border: 2rem solid blue;
+  border: 2.5rem solid blue;
   border-radius: 1rem;
   width: var(--container-width);
   height: 80vh;
