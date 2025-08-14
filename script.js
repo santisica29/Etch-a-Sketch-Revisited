@@ -26,6 +26,7 @@ function makeGrid(size) {
 function addEventListenersToGrids(modeSelected) {
   let grids = document.querySelectorAll(".grid");
   let functionToCall;
+
   switch (modeSelected) {
     case "color":
       functionToCall = colorMode;
@@ -35,6 +36,10 @@ function addEventListenersToGrids(modeSelected) {
       break;
     case "eraser":
       functionToCall = eraserMode;
+      break;
+    default:
+      functionToCall = colorMode;
+      break;
   }
 
   grids.forEach((x) => {
@@ -59,6 +64,5 @@ function randomMode(e) {
 
   let randomColor = `rgb(${randomNum1}, ${randomNum2}, ${randomNum3})`;
 
-  e.currentTarget.style.backgroundColor = randomColor
-
+  e.currentTarget.style.backgroundColor = randomColor;
 }
