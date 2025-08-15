@@ -1,6 +1,7 @@
 const container = document.querySelector("#container");
 let mode = document.querySelector("#mode");
 let modeSelected;
+let currentEventListenerFunction;
 
 let btnMode = document.querySelector(".btnMode");
 btnMode.addEventListener("click", () => {
@@ -42,9 +43,15 @@ function addEventListenersToGrids(modeSelected) {
       break;
   }
 
+
   grids.forEach((x) => {
+    if (currentEventListenerFunction != undefined) {
+      x.removeEventListener('mouseover', currentEventListenerFunction);
+    }
     x.addEventListener("mouseover", functionToCall);
   });
+
+  currentEventListenerFunction = functionToCall;
 }
 
 function colorMode(e) {
