@@ -2,6 +2,21 @@ const container = document.querySelector("#container");
 let mode = document.querySelector("#mode");
 let modeSelected;
 let currentEventListenerFunction;
+let btnGenerate = document.querySelector('.btnGenerate');
+
+btnGenerate.addEventListener('click', generateNewGrid);
+
+function generateNewGrid(){
+  let newSize = document.querySelector('#gridSize').value;
+  if (newSize === '') return;
+  if (newSize > 100 || newSize < 1) {
+    alert('invalid option');
+    return;
+  }
+
+  removeGrid();
+  makeGrid(newSize);
+}
 
 let btnMode = document.querySelector(".btnMode");
 btnMode.addEventListener("click", () => {
@@ -24,6 +39,12 @@ function makeGrid(size) {
 
     container.appendChild(grid);
   }
+}
+
+function removeGrid(){
+  let grids = document.querySelectorAll('.grid');
+
+  grids.forEach(grid => grid.remove());
 }
 
 function addEventListenersToGrids(modeSelected) {
