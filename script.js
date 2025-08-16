@@ -2,15 +2,15 @@ const container = document.querySelector("#container");
 let mode = document.querySelector("#mode");
 let modeSelected;
 let currentEventListenerFunction;
-let btnGenerate = document.querySelector('.btnGenerate');
+let btnGenerate = document.querySelector(".btnGenerate");
 
-btnGenerate.addEventListener('click', generateNewGrid);
+btnGenerate.addEventListener("click", generateNewGrid);
 
-function generateNewGrid(){
-  let newSize = document.querySelector('#gridSize').value;
-  if (newSize === '') return;
+function generateNewGrid() {
+  let newSize = document.querySelector("#gridSize").value;
+  if (newSize === "") return;
   if (newSize > 100 || newSize < 1) {
-    alert('invalid option');
+    alert("invalid option");
     return;
   }
 
@@ -30,7 +30,10 @@ makeGrid(16);
 function makeGrid(size) {
   let gridSize = size * size;
   let root = document.documentElement;
-  root.style.setProperty('--grid-size-percentage', `calc(var(--container-width) / ${size})`);
+  root.style.setProperty(
+    "--grid-size-percentage",
+    `calc(var(--container-width) / ${size})`
+  );
 
   for (let i = 0; i < gridSize; i++) {
     let grid = document.createElement("div");
@@ -41,10 +44,10 @@ function makeGrid(size) {
   }
 }
 
-function removeGrid(){
-  let grids = document.querySelectorAll('.grid');
+function removeGrid() {
+  let grids = document.querySelectorAll(".grid");
 
-  grids.forEach(grid => grid.remove());
+  grids.forEach((grid) => grid.remove());
 }
 
 function addEventListenersToGrids(modeSelected) {
@@ -68,7 +71,7 @@ function addEventListenersToGrids(modeSelected) {
 
   grids.forEach((x) => {
     if (currentEventListenerFunction != undefined) {
-      x.removeEventListener('mouseover', currentEventListenerFunction);
+      x.removeEventListener("mouseover", currentEventListenerFunction);
     }
     x.addEventListener("mouseover", functionToCall);
   });
@@ -77,7 +80,9 @@ function addEventListenersToGrids(modeSelected) {
 }
 
 function colorMode(e) {
-  e.currentTarget.style.backgroundColor = "red";
+  let colorValue = document.querySelector(".colorPicker").value;
+
+  e.currentTarget.style.backgroundColor = colorValue;
 }
 
 function eraserMode(e) {
@@ -94,4 +99,11 @@ function randomMode(e) {
   let randomColor = `rgb(${randomNum1}, ${randomNum2}, ${randomNum3})`;
 
   e.currentTarget.style.backgroundColor = randomColor;
+}
+
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgb(${r}, ${g}, ${b})`;
 }
