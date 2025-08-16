@@ -61,6 +61,9 @@ function addEventListenersToGrids(modeSelected) {
     case "random":
       functionToCall = randomMode;
       break;
+    case "dark":
+      functionToCall = darkMode;
+      break;
     case "eraser":
       functionToCall = eraserMode;
       break;
@@ -99,6 +102,31 @@ function randomMode(e) {
   let randomColor = `rgb(${randomNum1}, ${randomNum2}, ${randomNum3})`;
 
   e.currentTarget.style.backgroundColor = randomColor;
+}
+
+function darkMode(e){
+
+  let currentBrightness = window.getComputedStyle(e.currentTarget).getPropertyValue('filter');
+  console.log(currentBrightness);
+
+  
+
+  let currentBrightnessValue = currentBrightness.split("").filter(x => {
+    let isANum = Number(x);
+    if (isANum) {
+      return x;
+    }
+  })
+
+  console.log(currentBrightnessValue);
+
+  currentBrightnessValue = currentBrightnessValue.join('')
+  
+  console.log(currentBrightnessValue);
+
+
+  currentBrightnessValue = currentBrightnessValue - 0.1;
+  e.currentTarget.style.filter = `brightness(${currentBrightness})`
 }
 
 function hexToRgb(hex) {
