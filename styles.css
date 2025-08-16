@@ -1,12 +1,11 @@
 * {
   --container-width: 700px;
-  --percentage: calc(var(--container-width) / 16);
 }
 
 .grid {
   box-sizing: border-box;
   border: 1px solid black;
-  width: var(--percentage);
+  width: var(--grid-size-percentage);
   min-height: 1px;
 }
 

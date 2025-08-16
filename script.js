@@ -14,6 +14,8 @@ makeGrid(16);
 
 function makeGrid(size) {
   let gridSize = size * size;
+  let root = document.documentElement;
+  root.style.setProperty('--grid-size-percentage', `calc(var(--container-width) / ${size})`);
 
   for (let i = 0; i < gridSize; i++) {
     let grid = document.createElement("div");
@@ -42,7 +44,6 @@ function addEventListenersToGrids(modeSelected) {
       functionToCall = colorMode;
       break;
   }
-
 
   grids.forEach((x) => {
     if (currentEventListenerFunction != undefined) {
