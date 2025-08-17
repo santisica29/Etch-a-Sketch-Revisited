@@ -105,28 +105,19 @@ function randomMode(e) {
 }
 
 function darkMode(e){
-
   let currentBrightness = window.getComputedStyle(e.currentTarget).getPropertyValue('filter');
-  console.log(currentBrightness);
 
-  
+  if (currentBrightness === 'none'){
+    currentBrightness = e.currentTarget.style.filter = 'brightness(1)';
+  } 
 
-  let currentBrightnessValue = currentBrightness.split("").filter(x => {
-    let isANum = Number(x);
-    if (isANum) {
-      return x;
-    }
-  })
-
-  console.log(currentBrightnessValue);
-
-  currentBrightnessValue = currentBrightnessValue.join('')
+  let currentBrightnessValue = currentBrightness.split("").filter(x => Number(x) || x === '.').join('');
   
   console.log(currentBrightnessValue);
 
+  e.currentTarget.style.filter = `brightness(${currentBrightnessValue - 0.1})`;
 
-  currentBrightnessValue = currentBrightnessValue - 0.1;
-  e.currentTarget.style.filter = `brightness(${currentBrightness})`
+  console.log(window.getComputedStyle(e.currentTarget).getPropertyValue('filter'))
 }
 
 function hexToRgb(hex) {
