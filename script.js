@@ -4,6 +4,9 @@ let modeSelected;
 let currentEventListenerFunction;
 let btnGenerate = document.querySelector(".btnGenerate");
 let msg = document.querySelector('.msg');
+let resetBtn = document.querySelector('.resetBtn');
+
+resetBtn.addEventListener('click', reset);
 
 btnGenerate.addEventListener("click", generateNewGrid);
 
@@ -52,6 +55,11 @@ function generateNewGrid() {
 
   removeGrid();
   makeGrid(newSize);
+}
+
+function reset(){
+  removeGrid();
+  makeGrid(16);
 }
 
 function addEventListenersToGrids(modeSelected) {
