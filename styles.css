@@ -2,6 +2,10 @@
   --container-width: 700px;
 }
 
+body{
+  margin: 2rem;
+}
+
 .grid {
   box-sizing: border-box;
   border: .5px solid rgba(0, 0, 0, 0.1);
@@ -18,4 +22,21 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+main{
+  margin: auto 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.generator{
+  padding: 3rem;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: darkgreen;
+  border-radius: 9px;
 }

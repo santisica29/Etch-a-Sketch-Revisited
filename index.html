@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch A Sketch</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
-    <div class="gridSizeSelection">
-        <label for="gridSize">Change the size <span>(100 is the limit)</span></label>
-        <input type="number" value="16" id="gridSize">
-        <button class="btnGenerate">Generate</button>
-        <div class="msg"></div>
-    </div>
-    <div class="modeSelection">
-        <label for="mode">Select your mode:</label>
-        <select name="mode" id="mode">
+  </head>
+  <body>
+    <main>
+      <div class="generator">
+        <div class="gridSizeSelection">
+          <label for="gridSize"
+            >Change the size <span>(100 is the limit)</span></label
+          >
+          <input type="number" value="16" id="gridSize" />
+          <button class="btnGenerate">Generate</button>
+          <div class="msg"></div>
+        </div>
+        <div class="modeSelection">
+          <label for="mode">Select your mode:</label>
+          <select name="mode" id="mode">
             <option value="color">Color</option>
             <option value="random">Random</option>
             <option value="dark">Dark</option>
             <option value="eraser">Eraser</option>
-        </select>
-        <input type="color" class="colorPicker">
-        <button class="btnMode">Confirm</button>
-    </div>
-    <button type="reset" class="resetBtn">Reset</button>
-    <div id="container"></div>
-</body>
+          </select>
+          <input type="color" class="colorPicker" />
+          <button class="btnMode">Confirm</button>
+        </div>
+        <button type="reset" class="resetBtn">Reset</button>
+      </div>
+
+      <div id="container"></div>
+    </main>
+  </body>
 </html>
