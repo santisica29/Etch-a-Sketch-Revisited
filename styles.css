@@ -6,7 +6,7 @@
   box-sizing: border-box;
   border: .5px solid rgba(0, 0, 0, 0.1);
   width: var(--grid-size-percentage);
-  min-height: 1px;
+  background-color: white;
 }
 
 #container {

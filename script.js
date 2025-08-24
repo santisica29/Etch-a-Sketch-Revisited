@@ -3,20 +3,9 @@ let mode = document.querySelector("#mode");
 let modeSelected;
 let currentEventListenerFunction;
 let btnGenerate = document.querySelector(".btnGenerate");
+let msg = document.querySelector('.msg');
 
 btnGenerate.addEventListener("click", generateNewGrid);
-
-function generateNewGrid() {
-  let newSize = document.querySelector("#gridSize").value;
-  if (newSize === "") return;
-  if (newSize > 100 || newSize < 1) {
-    alert("invalid option");
-    return;
-  }
-
-  removeGrid();
-  makeGrid(newSize);
-}
 
 let btnMode = document.querySelector(".btnMode");
 btnMode.addEventListener("click", () => {
@@ -48,6 +37,21 @@ function removeGrid() {
   let grids = document.querySelectorAll(".grid");
 
   grids.forEach((grid) => grid.remove());
+}
+
+function generateNewGrid() {
+  let newSize = document.querySelector("#gridSize").value;
+  if (newSize === "") return;
+  if (newSize > 100 || newSize < 1) {
+    msg.textContent = 'invalid option';
+    msg.style.color = 'red';
+
+    setTimeout(() => msg.textContent = '', 2000);
+    return;
+  }
+
+  removeGrid();
+  makeGrid(newSize);
 }
 
 function addEventListenersToGrids(modeSelected) {
@@ -89,9 +93,10 @@ function colorMode(e) {
 }
 
 function eraserMode(e) {
+  e.currentTarget.style.filter = 'brightness(1)'
   let doesItHaveAColorSet = e.currentTarget.style.backgroundColor != "";
 
-  if (doesItHaveAColorSet) e.currentTarget.style.backgroundColor = "";
+  if (doesItHaveAColorSet) e.currentTarget.style.backgroundColor = "white";
 }
 
 function randomMode(e) {
@@ -113,11 +118,7 @@ function darkMode(e){
 
   let currentBrightnessValue = currentBrightness.split("").filter(x => Number(x) || x === '.').join('');
   
-  console.log(currentBrightnessValue);
-
   e.currentTarget.style.filter = `brightness(${currentBrightnessValue - 0.1})`;
-
-  console.log(window.getComputedStyle(e.currentTarget).getPropertyValue('filter'))
 }
 
 function hexToRgb(hex) {
